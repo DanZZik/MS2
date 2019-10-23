@@ -1,0 +1,47 @@
+	<form method=POST>
+		<input type=text name='name' placeholder='Imie'>
+		<input type=number name='age' placeholder='Wiek'>
+		<input type=number name='ilosc' placeholder='ilosc'>
+		<input type=submit name='button' value='zatwierdz'>
+	</form>	
+<?php
+	if((!empty($_POST['name'])) && $_POST['name']!="ZSK" && $_POST['name']!="ZSL")
+	{
+		$imie=$_POST['name'];
+		$dlugosc=strlen($imie);
+		//sanityzacja 1
+		$imieN=ucfirst(strtolower(trim($imie)));
+		echo $imieN,'<br>';
+		
+		$ilosc=$_POST['ilosc'];
+		$imieN2 = substr($imieN,0,$ilosc);
+		
+		echo 'zmienna imie: ',$imie, ' Dlugosc: ', strlen($imie),' znakow<br>';
+		echo ' Zmienna imie, ktora podal uzytkownik : ',$imie, ' ilosc znakow: ', $dlugosc,'<br>';
+		echo "wyswietlam ilosc znakow o jaka prosi uzytkownik : $imieN2";
+	}
+	else if($_POST['name']=="ZSK")
+	{
+		$zsk="######";
+		echo $zsk;
+	}
+	else if($_POST['name']=="ZSL")
+	{
+		$zsl="######";
+		echo $zsl;
+	}
+	if(!empty($_POST['ilosc']))
+	{
+		$ilosc=$_POST['ilosc'];
+		echo "<br>uzytownik poprosil o $ilosc znakow";
+		
+		
+	}
+	if(!empty($_POST['age']))
+	{
+		$wiek=$_POST['age'];
+		echo '<br> wiek = ',$wiek;
+	}
+
+	
+?>
